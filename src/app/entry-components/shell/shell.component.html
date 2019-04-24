@@ -1,0 +1,22 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [mode]="'side'">
+    <mat-toolbar *ngIf="false">
+    </mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let route of routes">
+        <a [routerLink]="'/' + route.path" (click)="nav(route)" [style.color]="!isActive(route) ? 'rgba(0,0,0,.87)' : '#ffffff'" [style.backgroundColor]="isActive(route) ? 'rgba(0,0,0,.87)' : '#ffffff'">
+          <button mat-button>
+            <mat-icon *ngIf="route.icon">{{route.icon}}</mat-icon>
+            {{ route.path }}
+          </button>
+        </a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button style="padding: 0;" mat-raised-button (click)="drawer.toggle()"><h1><code><i>/stay_sharp/with<small>&gt;</small></i>&nbsp;<b class="primary">git</b></code></h1></button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

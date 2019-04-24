@@ -1,0 +1,15 @@
+<mat-card *ngIf="slide" class="slide" [style.backgroundImage]="!hideDetails && slide.heroImg && 'url('+ slide.heroImg +')'">
+    <mat-card-header>
+        <div mat-card-avatar>
+            <mat-icon *ngIf="slide.icon">{{slide.icon}}</mat-icon>
+        </div>
+        <mat-card-title *ngIf="slide.title">{{slide.title}}</mat-card-title>
+        <mat-card-subtitle *ngIf="slide.subTitle">{{slide.subTitle}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <app-slide (click)="switchWrapper(item)" [slide]="item" *ngFor="let item of slide.bulletedList" [hideDetails]="true"></app-slide>
+        <app-code-sample [code]="sample" *ngFor="let sample of slide.codeSamples"></app-code-sample>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+</mat-card>
